@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply text-white font-body bg-background;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+
+  body {
+    @apply w-full;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    @apply brightness-[10];
+  }
+
+  input[type="range"] {
+    @apply h-5 rounded-lg appearance-none bg-background focus:outline-none focus:ring-1 ring-primary/40;
+
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    @apply w-[18px] scale-[2] h-[18px] rounded-full appearance-none cursor-pointer bg-primary focus:border-2 ring-4 ring-primary/20;
+  }
+
+  input[type="range"]:disabled::-webkit-slider-thumb {
+    @apply bg-gray-600 cursor-not-allowed ring-gray-600/20;
+  }
+
+  input[type="datetime-local"] {
+    @apply h-12 p-2 rounded-lg bg-background-paper;
+  }
+
+  input[type="datetime-local"]:focus {
+    @apply outline-none ring-1 ring-tertiary/50;
+  }
+
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    @apply invert;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button {
+    @apply ml-2 -mr-2;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .top-padding {
+    @apply pt-3;
+  }
+  .home-bg {
+    @apply h-[250px];
+  }
+  .annual-review-bg {
+    @apply h-[382px];
+  }
+  .expenses-review-bg {
+    @apply h-[300px];
+  }
+  .new-trip-bg {
+    @apply h-28;
+  }
+
+  /* Styles for iOS desktop-installed app */
+  @media (display-mode: standalone) {
+    @supports (-webkit-touch-callout: none) {
+      .top-padding {
+        @apply pt-14;
+      }
+      .home-bg {
+        @apply h-[294px];
+      }
+      .annual-review-bg {
+        @apply h-[426px];
+      }
+      .expenses-review-bg {
+        @apply h-[344px];
+      }
+      .home-bg {
+        @apply h-[294px];
+      }
+      .new-trip-bg {
+        @apply h-[156px];
+      }
+    }
+  }
+}

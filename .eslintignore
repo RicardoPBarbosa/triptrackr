@@ -1,0 +1,10 @@
+**/node_modules/*
+**/.next/*
+**/.vercel/*
+package-lock.json
+public
+lint-staged.config.js
+tailwind.config.cjs
+postcss.config.cjs
+jest.config.js
+migration/*
