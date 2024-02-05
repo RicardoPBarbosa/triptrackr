@@ -20,14 +20,14 @@ export async function middleware(request: NextRequest) {
 
     const { error } = await supabase.auth.getSession();
 
-    if (error) {
-      response.cookies.delete(
-        `sb-${process.env.NEXT_PUBLIC_SUPABASE_REF_ID}-auth-token.0`,
-      );
-      response.cookies.delete(
-        `sb-${process.env.NEXT_PUBLIC_SUPABASE_REF_ID}-auth-token.1`,
-      );
-      return ["error", response];
+    if (error?.message.match("Invalid Refresh Token")) {
+      const allCookies = request.cookies.getAll();
+      allCookies.forEach((cookie) => {
+        // Delete all Supabase cookies starting with 'sb-'
+        if (cookie.name.startsWith("sb-")) {
+          response.cookies.delete(cookie.name);
+        }
+      });
     }
 
     return response;
