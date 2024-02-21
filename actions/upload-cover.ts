@@ -37,6 +37,11 @@ export async function handleCoverUploaded(tripId: string, formData: FormData) {
   const arrayBuffer = await cover.arrayBuffer();
   const buffer = new Uint8Array(arrayBuffer);
 
+  const mime = cover.type;
+  const encoding = "base64";
+  const base64Data = Buffer.from(buffer).toString(encoding);
+  const fileUri = "data:" + mime + ";" + encoding + "," + base64Data;
+
   try {
     const cookieStore = cookies();
     const supabase = createClient(cookieStore);
@@ -52,27 +57,26 @@ export async function handleCoverUploaded(tripId: string, formData: FormData) {
 
     const data = await new Promise<UploadApiResponse | undefined>(
       (resolve, reject) => {
-        cloudinary.uploader
-          .upload_stream(
-            {
-              folder: "triptrackr",
-              public_id: `covers/${tripId}`,
-              overwrite: true,
-              invalidate: true,
-              resource_type: "image",
-              type: "upload",
-              allowed_formats: ["jpg", "jpeg", "png", "webp"],
-              transformation: [
-                { width: 1280, height: 720, crop: "fill" },
-                { quality: "auto", fetch_format: "auto" },
-              ],
-            },
-            function (err, result) {
-              if (err) return reject(err);
-              resolve(result);
-            },
-          )
-          .end(buffer);
+        cloudinary.uploader.upload(
+          fileUri,
+          {
+            folder: "triptrackr",
+            public_id: `covers/${tripId}`,
+            overwrite: true,
+            invalidate: true,
+            resource_type: "image",
+            type: "upload",
+            allowed_formats: ["jpg", "jpeg", "png", "webp"],
+            transformation: [
+              { width: 1280, height: 720, crop: "fill" },
+              { quality: "auto", fetch_format: "auto" },
+            ],
+          },
+          function (err, result) {
+            if (err) return reject(err);
+            resolve(result);
+          },
+        );
       },
     );
 
