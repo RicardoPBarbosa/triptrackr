@@ -61,7 +61,7 @@ export default async function ComingNext() {
       <h2 className="font-body text-sm font-medium text-primary">
         COMING NEXT
       </h2>
-      <div className="mb-3 mt-2 flex items-center justify-between">
+      <div className="mb-3 mt-2 flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-4xl">
           <Link
             className="underline decoration-gray-500 underline-offset-4 transition-colors hover:text-secondary hover:decoration-secondary/50"
@@ -80,7 +80,7 @@ export default async function ComingNext() {
           />
         </span>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="mb-8 flex items-center justify-between">
         <p className="flex items-center gap-1 text-tertiary">
           <Timer size={16} />
           <span className="leading-none">
@@ -95,7 +95,7 @@ export default async function ComingNext() {
           day trip
         </p>
       </div>
-      <div className="mt-2 flex h-[119px] items-center justify-evenly rounded-lg border border-background bg-background">
+      <div className="absolute -bottom-24 left-1/2 mt-2 flex h-[119px] w-full -translate-x-1/2 items-center justify-evenly rounded-lg border border-background bg-background">
         <Link
           prefetch={true}
           href={`/trip/${data.id}/checklist`}
