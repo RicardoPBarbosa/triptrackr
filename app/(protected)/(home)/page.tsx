@@ -24,7 +24,7 @@ export default async function Home() {
 
   return (
     <div className="pb-32">
-      <div className="top-padding home-bg relative mb-24 flex flex-col items-center bg-background-paper px-3">
+      <div className="top-padding home-bg relative mb-28 flex flex-col items-center bg-background-paper px-3">
         <Image src="/assets/logo.svg" alt="Logo" width={112} height={69} />
         <ComingNext />
       </div>
