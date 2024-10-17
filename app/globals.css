@@ -66,9 +66,9 @@
   .top-padding {
     @apply pt-3;
   }
-  .home-bg {
+  /* .home-bg {
     @apply h-[250px];
-  }
+  } */
   .annual-review-bg {
     @apply h-[382px];
   }
@@ -85,18 +85,18 @@
       .top-padding {
         @apply pt-14;
       }
-      .home-bg {
+      /* .home-bg {
         @apply h-[294px];
-      }
+      } */
       .annual-review-bg {
         @apply h-[426px];
       }
       .expenses-review-bg {
         @apply h-[344px];
       }
-      .home-bg {
+      /* .home-bg {
         @apply h-[294px];
-      }
+      } */
       .new-trip-bg {
         @apply h-[156px];
       }
